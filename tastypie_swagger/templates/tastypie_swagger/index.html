@@ -45,15 +45,7 @@
     </style>
 
     <script type="text/javascript">
-        $(document).ready(function(){
-          // add a new ApiKeyAuthorization when the api-key changes in the ui.
-            $('#input_apiKey').change(function() {
-              var key = $('#input_apiKey')[0].value;
-              if(key && key.trim() != "") {
-                window.authorizations.add("key", new ApiKeyAuthorization("apiKey", key, "header"));
-              }
-            });
-        });
+
         $(function () {
             window.swaggerUi = new SwaggerUi({
                 url:"{{ discovery_url }}",
@@ -83,7 +75,7 @@
               console.log("new key: " + key);
               if(key && key.trim() != "") {
                 console.log("added key " + key);
-                var auth = new window.ApiKeyAuthorization("api_key", key, "header");
+                var auth = new window.ApiKeyAuthorization("Authorization", key, "header");
                 window.authorizations.add("key", auth);
               }
             });
