@@ -69,6 +69,15 @@
                 },
                 docExpansion: "none"
             });
+            $('#input_apiKey').change(function() {
+              var key = $('#input_apiKey').val();
+              console.log("new key: " + key);
+              if(key && key.trim() != "") {
+                console.log("added key " + key);
+                var auth = new window.ApiKeyAuthorization("api_key", key, "header");
+                window.authorizations.add("key", auth);
+              }
+            });
 
             window.swaggerUi.load();
         });
